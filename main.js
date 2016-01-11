@@ -15,19 +15,19 @@ var $moves;
 var moves = 0;
 var audioPlaying = false;
 
-var preload = {dramatic: {audio: new Audio ('sounds/dramatic.mp3'), image: 'url(images/dramaticGopher.gif)'},
-              omfgdogs: {audio: new Audio('sounds/omfgdogs.mp3'), image: 'url(images/omfgdogs.gif)'},
-              nyancat: {audio: new Audio('sounds/nyancat.mp3'), image: 'url(images/nyancade.gif)'},
-              pokemon: {audio: new Audio('sounds/pokemon.mp3'), image: 'url(images/magikarp.gif)'},
-              leekspin: {audio: new Audio('sounds/leekspin.mp3'), image: 'url(images/leekspin.gif)'},
-              heman: {audio: new Audio('sounds/heman.mp3'), image: 'url(images/heman.gif)'},
-              gangnam: {audio: new Audio('sounds/gangnam.mp3'), image: 'url(images/gangnamStyle.gif)'},
-              pbjtime: {audio: new Audio('sounds/pbjtime.mp3'), image: 'url(images/pbjtime.gif)'},
-              numanuma: {audio: new Audio('sounds/numanuma.mp3'), image: 'url(images/numanuma.gif)'},
-              spiderpig: {audio: new Audio('sounds/spiderpig.mp3'), image: 'url(images/spiderpig.gif)'},
-              looneyTunes: {audio: new Audio('sounds/looneyTunes.mp3'), image: 'url(images/looneyTunes.gif)'},
-              tux: {image: 'url(images/tux.png)'},
-              octocat: {image: 'url(images/octocat.png)'}};
+var preload = {dramatic: {audio: new Audio ('sounds/dramatic.mp3'), image: new Image().src = 'images/dramaticGopher.gif'},
+              omfgdogs: {audio: new Audio('sounds/omfgdogs.mp3'), image: new Image().src = 'images/omfgdogs.gif'},
+              nyancat: {audio: new Audio('sounds/nyancat.mp3'), image: new Image().src = 'images/nyancade.gif'},
+              pokemon: {audio: new Audio('sounds/pokemon.mp3'), image: new Image().src = 'images/magikarp.gif'},
+              leekspin: {audio: new Audio('sounds/leekspin.mp3'), image: new Image().src = 'images/leekspin.gif'},
+              heman: {audio: new Audio('sounds/heman.mp3'), image: new Image().src = 'images/heman.gif'},
+              gangnam: {audio: new Audio('sounds/gangnam.mp3'), image: new Image().src = 'images/gangnamStyle.gif'},
+              pbjtime: {audio: new Audio('sounds/pbjtime.mp3'), image: new Image().src = 'images/pbjtime.gif'},
+              numanuma: {audio: new Audio('sounds/numanuma.mp3'), image: new Image().src = 'images/numanuma.gif'},
+              spiderpig: {audio: new Audio('sounds/spiderpig.mp3'), image: new Image().src = 'images/spiderpig.gif'},
+              looneyTunes: {audio: new Audio('sounds/looneyTunes.mp3'), image: new Image().src = 'images/looneyTunes.gif'},
+              tux: {image: new Image().src = 'images/tux.png'},
+              octocat: {image: new Image().src = 'images/octocat.png'}};
 
 $(document).ready(init);
 function init(){
@@ -295,8 +295,8 @@ function playAudio(audioName){
   }
 }
 
-function setCard($card, imagePath){
-  $card.css("background-image", imagePath);
+function setCard($card, imageObj){
+  $card.css("background-image", "url(" + imageObj + ")");
 }
 function checkWin(){
   if($gameArea.children().length === 0){
