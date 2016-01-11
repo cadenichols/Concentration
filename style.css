@@ -48,3 +48,42 @@ body label {
   letter-spacing: 2px;
   text-shadow: 1px 1px 4px black, -1px 1px 4px black, 1px -1px 4px black, -1px -1px 4px black;
 }
+
+.gameInfo > * {
+  display: inline;
+}
+
+.gameInfo p {
+  font-family: 'Chicle', sans-serif;
+  font-size: 24px;
+  color: #52FF00;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 4px black, -1px 1px 4px black, 1px -1px 4px black, -1px -1px 4px black;
+}
+
+#movesTaken {
+  font-family: 'Caesar Dressing', cursive;
+}
+
+#newGame {
+  border: none;
+  border-radius: 0px;
+  background-color: transparent;
+  font-family: 'Chicle', sans-serif;
+  font-size: 24px;
+  color: #52FF00;
+  text-shadow: 1px 1px 4px black, -1px 1px 4px black, 1px -1px 4px black, -1px -1px 4px black;
+  vertical-align: middle;
+}
+
+#newGame:hover {
+  color: #83ff00;
+}
+
+#newGame:focus{
+  outline: 0px;
+}
+
+#newGame:active{
+  color: #4fed00;
+}

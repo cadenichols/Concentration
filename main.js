@@ -11,15 +11,21 @@ var canClick = true;
 var matchesFound;
 var $gameSize = $('#gameSize');
 var $gameArea;
-
+var $moves;
+var moves = 0;
 $(document).ready(init);
 function init(){
+  varInit();
   newGame();
-  $newGame = $('#newGame');
   $newGame.click(newGame);
-  $gameSize = $('#gameSize');
   $gameSize.change(newGame);
+}
+
+function varInit(){
   $gameArea = $('.gameArea');
+  $moves = $('#movesTaken');
+  $gameSize = $('#gameSize');
+  $newGame = $('#newGame');
 }
 
 function newDeck(cardPairs){
@@ -35,6 +41,8 @@ function newDeck(cardPairs){
 }
 
 function newGame(){
+  moves = 0;
+  $moves.text(moves);
   gameSize = Math.floor($gameSize.val());
   if(gameSize <= 40 && gameSize >= 4){
     matchesFound = 0;
@@ -88,6 +96,8 @@ function cardClick(){
 };
 
 function compareCards($clickedCard){
+  moves++;
+  $moves.text(moves);
   canClick = false;
   if($selectedCard.data('face') === $clickedCard.data('face')){
     compareDelay = setTimeout(function(){
