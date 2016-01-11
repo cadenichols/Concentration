@@ -17,7 +17,7 @@ var audioPlaying = false;
 var dramatic = new Audio('sounds/dramatic.mp3');
 var omfgdogs = new Audio('sounds/omfgdogs.mp3');
 var nyancat = new Audio('sounds/nyancat.mp3');
-var pókemon = new Audio('sounds/pókemon.mp3');
+var pokemon = new Audio('sounds/pókemon.mp3');
 var leekspin = new Audio('sounds/leekspin.mp3');
 var heman = new Audio('sounds/heman.mp3');
 var gangnam = new Audio('sounds/gangnam.mp3');
@@ -190,7 +190,7 @@ function checkAudio(audioName){
       leekspin.pause();
       break;
     case 3:
-      pókemon.pause();
+      pokemon.pause();
       break;
     case 4:
       heman.pause();
@@ -219,8 +219,8 @@ function playAudio(audioName){
         leekspin.currentTime = 0;
         break;
       case 3:
-        pókemon.currentTime = 0.5;
-        pókemon.play();
+        pokemon.currentTime = 0.5;
+        pokemon.play();
         break;
       case 4:
         heman.currentTime = 0;
