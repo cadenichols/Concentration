@@ -23,6 +23,7 @@ var heman = new Audio('sounds/heman.mp3');
 var gangnam = new Audio('sounds/gangnam.mp3');
 var pbjtime = new Audio('sounds/pbjtime.mp3');
 var numanuma = new Audio('sounds/numanuma.mp3');
+var spiderpig = new Audio('sounds/spiderpig.mp3');
 
 $(document).ready(init);
 function init(){
@@ -178,6 +179,10 @@ function flipCard($card){
         setCard($card, 'numanuma.gif');
         playAudio(11);
         break;
+      case 12:
+        setCard($card, 'spiderpig.gif');
+        playAudio(12);
+        break;
       default:
         $card.text($card.data('face'));
         break;
@@ -218,6 +223,9 @@ function checkAudio(audioName){
       break;
     case 11:
       numanuma.pause();
+      break;
+    case 12:
+      spiderpig.pause();
       break;
   }
   audioPlaying = false;
@@ -261,6 +269,10 @@ function playAudio(audioName){
       case 11:
         numanuma.currentTime = 60.5;
         numanuma.play();
+        break;
+      case 12:
+        spiderpig.currentTime = 0;
+        spiderpig.play();
         break;
     }
     audioPlaying = true;
