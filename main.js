@@ -13,7 +13,7 @@ var $gameSize = $('#gameSize');
 var $gameArea;
 var $moves;
 var moves = 0;
-var audioPlaying = false;
+var audioPlaying = 0;
 
 var preload = {dramatic: {audio: new Audio ('sounds/dramatic.mp3'), image: new Image().src = 'images/dramaticGopher.gif'},
               omfgdogs: {audio: new Audio('sounds/omfgdogs.mp3'), image: new Image().src = 'images/omfgdogs.gif'},
@@ -59,6 +59,7 @@ function newDeck(cardPairs){
 
 function newGame(){
   moves = 0;
+  checkAudio(audioPlaying);
   $moves.text(moves);
   $selectedCard = null;
   gameSize = Math.floor($gameSize.val());
@@ -206,6 +207,8 @@ function flipCard($card){
 }
 
 function checkAudio(audioName){
+  console.log("Checking audio");
+  console.log(audioPlaying);
   switch (audioName) {
     case 1:
       preload.nyancat.audio.pause();
@@ -291,7 +294,7 @@ function playAudio(audioName){
         preload.looneyTunes.audio.play();
         break;
     }
-    audioPlaying = true;
+    audioPlaying = audioName;
   }
 }
 
