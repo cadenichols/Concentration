@@ -123,20 +123,29 @@ function flipCard($card){
     $card.css('background-image', 'url(images/cardFace.png)');
     switch($card.data('face')){
       case 1:
-        $card.css('background-image', "url(images/nyancade.gif)");
+        setCard($card, 'nyancade.gif');
         break;
       case 2:
-        $card.css('background-image', "url(images/leekspin.gif)");
+        setCard($card, 'leekspin.gif');
         break;
       case 3:
-        $card.css('background-image', "url(images/magikarp.gif)");
+        setCard($card, 'magikarp.gif');
         break;
       case 4:
-        $card.css('background-image', "url(images/heman.gif)");
+        setCard($card, 'heman.gif');
         break;
       case 5:
-        $card.css('background-image', "url(images/gangnamStyle.gif)");
+        setCard($card, 'gangnamStyle.gif');
         break;
+      case 6:
+        setCard($card, 'dramaticGopher.gif');
+        break;
+      case 7:
+        setCard($card, 'octocat.png');
+        break;
+      case 8:
+        setCard($card, 'tux.png');
+      break;
       default:
         $card.text($card.data('face'));
         break;
@@ -148,6 +157,9 @@ function flipCard($card){
   }
 }
 
+function setCard($card, imageName){
+  $card.css("background-image", 'url(images/'+imageName);
+}
 function checkWin(){
   console.log("Checking win...");
   if($gameArea.children().length === 0){
