@@ -2,7 +2,7 @@
 
 var cards = [];
 var faces = [];
-var gameSize = 12;
+var gameSize;
 var $cards;
 var $newGame;
 var $selectedCard = null;
@@ -14,6 +14,9 @@ var $gameArea;
 var $moves;
 var moves = 0;
 var dramatic = new Audio('sounds/dramatic.mp3');
+var omfgdogs = new Audio('sounds/omfgdogs.mp3');
+var nyancat = new Audio('sounds/nyancat.mp3');
+var audioPlaying = false;
 
 $(document).ready(init);
 function init(){
@@ -104,6 +107,8 @@ function compareCards($clickedCard){
   canClick = false;
   if($selectedCard.data('face') === $clickedCard.data('face')){
     compareDelay = setTimeout(function(){
+      checkAudo($selectedCard.data('face'));
+      checkAudio($clickedCard.data('face'));
       $selectedCard.remove();
       $clickedCard.remove();
       $selectedCard = null;
@@ -127,6 +132,7 @@ function flipCard($card){
     switch($card.data('face')){
       case 1:
         setCard($card, 'nyancade.gif');
+        playAudio(1);
         break;
       case 2:
         setCard($card, 'leekspin.gif');
@@ -142,7 +148,7 @@ function flipCard($card){
         break;
       case 6:
         setCard($card, 'dramaticGopher.gif');
-        dramatic.play();
+        playAudio(6);
         break;
       case 7:
         setCard($card, 'octocat.png');
@@ -150,25 +156,65 @@ function flipCard($card){
       case 8:
         setCard($card, 'tux.png');
       break;
+      case 9:
+        setCard($card, 'omfgdogs.gif');
+        playAudio(9);
+        break;
       default:
         $card.text($card.data('face'));
         break;
     }
   }
   else {
-    switch($card.data('face')){
+    checkAudio($card.data('face'));
+    $card.text('');
+    $card.css({backgroundImage: 'url(images/playingCard.png)', backgroundRepeat: "no-repeat"});
+  }
+}
+
+function checkAudio(audioName){
+  switch (audioName) {
+    case 1:
+      nyancat.pause();
+      nyancat.currentTime = 0;
+    case 6:
+      dramatic.pause();
+      dramatic.currentTime = 0;
+      break;
+    case 9:
+      omfgdogs.pause();
+      omfgdogs.currentTime = 0;
+      break;
+  }
+  audioPlaying = false;
+}
+
+function playAudio(audioName){
+  if(!audioPlaying){
+    switch(audioName){
+      case 1:
+        nyancat.play();
+        break;
       case 6:
-        dramatic.pause()
-        dramatic.currentTime = 122;
+        dramatic.play();
+        break;
+      case 9:
+        omfgdogs.play();
         break;
     }
-    $card.text('');
-    $card.css("background-image", 'url(images/playingCard.png)');
+    audioPlaying = true;
   }
 }
 
 function setCard($card, imageName){
-  $card.css("background-image", 'url(images/'+imageName);
+  switch (imageName) {
+    case 'omfgdogs.gif':
+      $card.css({backgroundImage: 'url(images/'+imageName+')', backgroundRepeat: 'repeat-y'})
+      break;
+    default:
+      $card.css("background-image", 'url(images/'+imageName+')');
+      break;
+  }
 }
 function checkWin(){
   if($gameArea.children().length === 0){
