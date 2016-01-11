@@ -117,24 +117,20 @@
     moves++;
     $moves.text(moves);
     canClick = false;
-    if($selectedCard.data('face') === $clickedCard.data('face')){
-      compareDelay = setTimeout(function(){
+    compareDelay = setTimeout(function(){
+      if($selectedCard.data('face') === $clickedCard.data('face')){
         checkAudio($selectedCard.data('face'));
         checkAudio($clickedCard.data('face'));
         $selectedCard.remove();
         $clickedCard.remove();
-        $selectedCard = null;
         checkWin();
-        canClick = true;
       }, 500);
-    }
-    else{
-      compareDelay = setTimeout(function () {
+      else{
         flipCard($selectedCard);
         flipCard($clickedCard);
-        $selectedCard = null;
-        canClick = true;
-      }, 500);
+      }
+      $selectedCard = null;
+      canClick = true;
     }
   }
 
