@@ -10,6 +10,7 @@ var compareDelay;
 var canClick = true;
 var matchesFound;
 var $gameSize = $('#gameSize');
+var $gameArea;
 
 $(document).ready(init);
 function init(){
@@ -18,6 +19,7 @@ function init(){
   $newGame.click(newGame);
   $gameSize = $('#gameSize');
   $gameSize.change(newGame);
+  $gameArea = $('.gameArea');
 }
 
 function newDeck(cardPairs){
@@ -107,22 +109,22 @@ function compareCards($clickedCard){
 }
 
 function flipCard($card){
-  if($card.css('background-image').includes('playingCard.png')){
-    $card.css('background-image', 'url(cardFace.png)');
+  if($card.css('background-image').includes('images/playingCard.png')){
+    $card.css('background-image', 'url(images/cardFace.png)');
     $card.text($card.data('face'));
   }
   else {
     $card.text('');
-    $card.css('background-image', 'url(playingCard.png)');
+    $card.css('background-image', 'url(images/playingCard.png)');
   }
 }
 
 function checkWin(){
   console.log("Checking win...");
-  if($cards.length === 0){
-    console.log("You win!");
+  if($gameArea.children().length === 0){
+    alert("You win!");
   }
   else{
-    console.log($cards.length/2," cards left.");
+    console.log($gameArea.children().length," cards left.");
   }
 }

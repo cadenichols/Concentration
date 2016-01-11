@@ -1,11 +1,16 @@
 body {
-  background-image: url(greenFelt.png);
+  background-image: url(images/greenFelt.png);
+  text-align: center;
+}
+
+.sizeSelector {
+  margin-top: 24px;
   text-align: center;
 }
 
 .gameArea {
   text-align: center;
-  margin: 48px auto 0px auto;
+  margin: 24px auto 0px auto;
   font-size: 0px;
   width: 768px;
   height: 768px;
@@ -17,18 +22,29 @@ body {
   height: 93px;
   display: inline-block;
   margin: 8px;
-  background-image: url(playingCard.png);
+  background-image: url(images/playingCard.png);
   background-size: contain;
   display: inline-block;
   font-size: 48px;
   text-align: center;
   line-height: 93px;
   font-family: 'Caesar Dressing', cursive;
-  vertical-align: top;
   position: absolute;
+  /*Prevents the user from selecting text on the cards*/
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body label {
-  font-family: Arial, sans-serif;
-  font-size: 24px;
+  vertical-align: middle;
+  font-family: 'Chicle', sans-serif;
+  font-size: 32px;
+  color: #52FF00;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 4px black, -1px 1px 4px black, 1px -1px 4px black, -1px -1px 4px black;
 }
