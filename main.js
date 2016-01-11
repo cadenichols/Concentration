@@ -156,6 +156,12 @@ function flipCard($card){
     }
   }
   else {
+    switch($card.data('face')){
+      case 6:
+        dramatic.pause()
+        dramatic.currentTime = 122;
+        break;
+    }
     $card.text('');
     $card.css("background-image", 'url(images/playingCard.png)');
   }
