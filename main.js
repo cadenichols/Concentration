@@ -13,10 +13,14 @@ var $gameSize = $('#gameSize');
 var $gameArea;
 var $moves;
 var moves = 0;
+var audioPlaying = false;
 var dramatic = new Audio('sounds/dramatic.mp3');
 var omfgdogs = new Audio('sounds/omfgdogs.mp3');
 var nyancat = new Audio('sounds/nyancat.mp3');
-var audioPlaying = false;
+var pókemon = new Audio('sounds/pókemon.mp3');
+var leekspin = new Audio('sounds/leekspin.mp3');
+var heman = new Audio('sounds/heman.mp3');
+var gangnam = new Audio('sounds/gangnam.mp3');
 
 $(document).ready(init);
 function init(){
@@ -136,15 +140,19 @@ function flipCard($card){
         break;
       case 2:
         setCard($card, 'leekspin.gif');
+        playAudio(2);
         break;
       case 3:
         setCard($card, 'magikarp.gif');
+        playAudio(3);
         break;
       case 4:
         setCard($card, 'heman.gif');
+        playAudio(4);
         break;
       case 5:
         setCard($card, 'gangnamStyle.gif');
+        playAudio(5);
         break;
       case 6:
         setCard($card, 'dramaticGopher.gif');
@@ -164,11 +172,12 @@ function flipCard($card){
         $card.text($card.data('face'));
         break;
     }
+    $card.css('cursor','default');
   }
   else {
     checkAudio($card.data('face'));
     $card.text('');
-    $card.css({backgroundImage: 'url(images/playingCard.png)', backgroundRepeat: "no-repeat"});
+    $card.css({backgroundImage: 'url(images/playingCard.png)', backgroundRepeat: "no-repeat", height: "93px", cursor: "pointer"});
   }
 }
 
@@ -176,14 +185,23 @@ function checkAudio(audioName){
   switch (audioName) {
     case 1:
       nyancat.pause();
-      nyancat.currentTime = 0;
+      break;
+    case 2:
+      leekspin.pause();
+      break;
+    case 3:
+      pókemon.pause();
+      break;
+    case 4:
+      heman.pause();
+      break;
+    case 5:
+      gangnam.pause();
     case 6:
       dramatic.pause();
-      dramatic.currentTime = 0;
       break;
     case 9:
       omfgdogs.pause();
-      omfgdogs.currentTime = 0;
       break;
   }
   audioPlaying = false;
@@ -193,12 +211,31 @@ function playAudio(audioName){
   if(!audioPlaying){
     switch(audioName){
       case 1:
+        nyancat.currentTime = 0;
         nyancat.play();
         break;
+      case 2:
+        leekspin.play();
+        leekspin.currentTime = 0;
+        break;
+      case 3:
+        pókemon.currentTime = 0.5;
+        pókemon.play();
+        break;
+      case 4:
+        heman.currentTime = 0;
+        heman.play();
+        break;
+      case 5:
+        gangnam.currentTime = 4;
+        gangnam.play();
+        break;
       case 6:
+        dramatic.currentTime = 0.4;
         dramatic.play();
         break;
       case 9:
+        omfgdogs.currentTime = 0.3;
         omfgdogs.play();
         break;
     }
@@ -209,7 +246,7 @@ function playAudio(audioName){
 function setCard($card, imageName){
   switch (imageName) {
     case 'omfgdogs.gif':
-      $card.css({backgroundImage: 'url(images/'+imageName+')', backgroundRepeat: 'repeat-y'})
+      $card.css({backgroundImage: 'url(images/'+imageName+')', backgroundRepeat: 'repeat-y', height: "90px"})
       break;
     default:
       $card.css("background-image", 'url(images/'+imageName+')');
