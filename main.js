@@ -13,9 +13,12 @@ var $gameSize = $('#gameSize');
 var $gameArea;
 var $moves;
 var moves = 0;
+var dramatic = new Audio('sounds/dramatic.mp3');
+
 $(document).ready(init);
 function init(){
   varInit();
+
   newGame();
   $newGame.click(newGame);
   $gameSize.change(newGame);
@@ -139,6 +142,7 @@ function flipCard($card){
         break;
       case 6:
         setCard($card, 'dramaticGopher.gif');
+        dramatic.play();
         break;
       case 7:
         setCard($card, 'octocat.png');
