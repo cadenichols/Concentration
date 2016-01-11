@@ -171,11 +171,7 @@ function setCard($card, imageName){
   $card.css("background-image", 'url(images/'+imageName);
 }
 function checkWin(){
-  console.log("Checking win...");
   if($gameArea.children().length === 0){
     alert("You win!");
-  }
-  else{
-    console.log($gameArea.children().length," cards left.");
   }
 }
