@@ -124,14 +124,14 @@
         $selectedCard.remove();
         $clickedCard.remove();
         checkWin();
-      }, 500);
+      }
       else{
         flipCard($selectedCard);
         flipCard($clickedCard);
       }
       $selectedCard = null;
       canClick = true;
-    }
+    }, 500);
   }
 
   function flipCard($card){
