@@ -107,7 +107,7 @@ function compareCards($clickedCard){
   canClick = false;
   if($selectedCard.data('face') === $clickedCard.data('face')){
     compareDelay = setTimeout(function(){
-      checkAudo($selectedCard.data('face'));
+      checkAudio($selectedCard.data('face'));
       checkAudio($clickedCard.data('face'));
       $selectedCard.remove();
       $clickedCard.remove();
