@@ -87,3 +87,13 @@ body label {
 #newGame:active{
   color: #4fed00;
 }
+
+.sizeSelector input{
+  border: 0px;
+  display: inline;
+  text-align: center;
+}
+
+.sizeSelector input:focus {
+  outline: 0px;
+}
