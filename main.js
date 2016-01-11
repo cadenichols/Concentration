@@ -15,17 +15,19 @@ var $moves;
 var moves = 0;
 var audioPlaying = false;
 
-var dramatic = new Audio('sounds/dramatic.mp3');
-var omfgdogs = new Audio('sounds/omfgdogs.mp3');
-var nyancat = new Audio('sounds/nyancat.mp3');
-var pokemon = new Audio('sounds/pokemon.mp3');
-var leekspin = new Audio('sounds/leekspin.mp3');
-var heman = new Audio('sounds/heman.mp3');
-var gangnam = new Audio('sounds/gangnam.mp3');
-var pbjtime = new Audio('sounds/pbjtime.mp3');
-var numanuma = new Audio('sounds/numanuma.mp3');
-var spiderpig = new Audio('sounds/spiderpig.mp3');
-var looneyTunes = new Audio('sounds/looneyTunes.mp3');
+var preload = {dramatic: {audio: new Audio ('sounds/dramatic.mp3'), image: 'url(images/dramaticGopher.gif)'},
+              omfgdogs: {audio: new Audio('sounds/omfgdogs.mp3'), image: 'url(images/omfgdogs.gif)'},
+              nyancat: {audio: new Audio('sounds/nyancat.mp3'), image: 'url(images/nyancade.gif)'},
+              pokemon: {audio: new Audio('sounds/pokemon.mp3'), image: 'url(images/magikarp.gif)'},
+              leekspin: {audio: new Audio('sounds/leekspin.mp3'), image: 'url(images/leekspin.gif)'},
+              heman: {audio: new Audio('sounds/heman.mp3'), image: 'url(images/heman.gif)'},
+              gangnam: {audio: new Audio('sounds/gangnam.mp3'), image: 'url(images/gangnamStyle.gif)'},
+              pbjtime: {audio: new Audio('sounds/pbjtime.mp3'), image: 'url(images/pbjtime.gif)'},
+              numanuma: {audio: new Audio('sounds/numanuma.mp3'), image: 'url(images/numanuma.gif)'},
+              spiderpig: {audio: new Audio('sounds/spiderpig.mp3'), image: 'url(images/spiderpig.gif)'},
+              looneyTunes: {audio: new Audio('sounds/looneyTunes.mp3'), image: 'url(images/looneyTunes.gif)'},
+              tux: {image: 'url(images/tux.png)'},
+              octocat: {image: 'url(images/octocat.png)'}};
 
 $(document).ready(init);
 function init(){
@@ -140,53 +142,54 @@ function flipCard($card){
     $card.css('background-image', 'url(images/cardFace.png)');
     switch($card.data('face')){
       case 1:
-        setCard($card, 'nyancade.gif');
+        setCard($card, preload.nyancat.image);
         playAudio(1);
         break;
       case 2:
-        setCard($card, 'leekspin.gif');
+        setCard($card, preload.leekspin.image);
         playAudio(2);
         break;
       case 3:
-        setCard($card, 'magikarp.gif');
+        setCard($card, preload.pokemon.image);
         playAudio(3);
         break;
       case 4:
-        setCard($card, 'heman.gif');
+        setCard($card, preload.heman.image);
         playAudio(4);
         break;
       case 5:
-        setCard($card, 'gangnamStyle.gif');
+        setCard($card, preload.gangnam.image);
         playAudio(5);
         break;
       case 6:
-        setCard($card, 'dramaticGopher.gif');
+        setCard($card, preload.dramatic.image);
         playAudio(6);
         break;
       case 7:
-        setCard($card, 'octocat.png');
+        setCard($card, preload.octocat.image);
         break;
       case 8:
-        setCard($card, 'tux.png');
+        setCard($card, preload.tux.image);
       break;
       case 9:
-        setCard($card, 'omfgdogs.gif');
+        setCard($card, preload.omfgdogs.image);
+        $card.css({backgroundRepeat: 'repeat-y', height: "90px"});
         playAudio(9);
         break;
       case 10:
-        setCard($card, 'pbjtime.gif');
+        setCard($card, preload.pbjtime.image);
         playAudio(10);
         break;
       case 11:
-        setCard($card, 'numanuma.gif');
+        setCard($card, preload.numanuma.image);
         playAudio(11);
         break;
       case 12:
-        setCard($card, 'spiderpig.gif');
+        setCard($card, preload.spiderpig.image);
         playAudio(12);
         break;
       case 13:
-        setCard($card, 'looneyTunes.gif');
+        setCard($card, preload.looneyTunes.image);
         playAudio(13);
         break;
       default:
@@ -205,36 +208,36 @@ function flipCard($card){
 function checkAudio(audioName){
   switch (audioName) {
     case 1:
-      nyancat.pause();
+      preload.nyancat.audio.pause();
       break;
     case 2:
-      leekspin.pause();
+      preload.leekspin.audio.pause();
       break;
     case 3:
-      pokemon.pause();
+      preload.pokemon.audio.pause();
       break;
     case 4:
-      heman.pause();
+      preload.heman.audio.pause();
       break;
     case 5:
-      gangnam.pause();
+      preload.gangnam.audio.pause();
     case 6:
-      dramatic.pause();
+      preload.dramatic.audio.pause();
       break;
     case 9:
-      omfgdogs.pause();
+      preload.omfgdogs.audio.pause();
       break;
     case 10:
-      pbjtime.pause();
+      preload.pbjtime.audio.pause();
       break;
     case 11:
-      numanuma.pause();
+      preload.numanuma.audio.pause();
       break;
     case 12:
-      spiderpig.pause();
+      preload.spiderpig.audio.pause();
       break;
     case 13:
-      looneyTunes.pause();
+      preload.looneyTunes.audio.pause();
       break;
   }
   audioPlaying = false;
@@ -244,63 +247,56 @@ function playAudio(audioName){
   if(!audioPlaying){
     switch(audioName){
       case 1:
-        nyancat.currentTime = 0;
-        nyancat.play();
+        preload.nyancat.audio.currentTime = 0;
+        preload.nyancat.audio.play();
         break;
       case 2:
-        leekspin.play();
-        leekspin.currentTime = 0;
+        preload.leekspin.audio.play();
+        preload.leekspin.audio.currentTime = 0;
         break;
       case 3:
-        pokemon.currentTime = 0.5;
-        pokemon.play();
+        preload.pokemon.audio.currentTime = 0.5;
+        preload.pokemon.audio.play();
         break;
       case 4:
-        heman.currentTime = 0;
-        heman.play();
+        preload.heman.audio.currentTime = 0;
+        preload.heman.audio.play();
         break;
       case 5:
-        gangnam.currentTime = 4;
-        gangnam.play();
+        preload.gangnam.audio.currentTime = 4;
+        preload.gangnam.audio.play();
         break;
       case 6:
-        dramatic.currentTime = 0.4;
-        dramatic.play();
+        preload.dramatic.audio.currentTime = 0.4;
+        preload.dramatic.audio.play();
         break;
       case 9:
-        omfgdogs.currentTime = 0.3;
-        omfgdogs.play();
+        preload.omfgdogs.audio.currentTime = 0.3;
+        preload.omfgdogs.audio.play();
         break;
       case 10:
-        pbjtime.currentTime = 0.5;
-        pbjtime.play();
+        preload.pbjtime.audio.currentTime = 0.5;
+        preload.pbjtime.audio.play();
         break;
       case 11:
-        numanuma.currentTime = 60.5;
-        numanuma.play();
+        preload.numanuma.audio.currentTime = 60.5;
+        preload.numanuma.audio.play();
         break;
       case 12:
-        spiderpig.currentTime = 0;
-        spiderpig.play();
+        preload.spiderpig.audio.currentTime = 0;
+        preload.spiderpig.audio.play();
         break;
       case 13:
-        looneyTunes.currentTime = 0.7;
-        looneyTunes.play();
+        preload.looneyTunes.audio.currentTime = 0.7;
+        preload.looneyTunes.audio.play();
         break;
     }
     audioPlaying = true;
   }
 }
 
-function setCard($card, imageName){
-  switch (imageName) {
-    case 'omfgdogs.gif':
-      $card.css({backgroundImage: 'url(images/'+imageName+')', backgroundRepeat: 'repeat-y', height: "90px"})
-      break;
-    default:
-      $card.css("background-image", 'url(images/'+imageName+')');
-      break;
-  }
+function setCard($card, imagePath){
+  $card.css("background-image", imagePath);
 }
 function checkWin(){
   if($gameArea.children().length === 0){
