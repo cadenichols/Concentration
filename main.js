@@ -21,6 +21,8 @@ var pokemon = new Audio('sounds/pokemon.mp3');
 var leekspin = new Audio('sounds/leekspin.mp3');
 var heman = new Audio('sounds/heman.mp3');
 var gangnam = new Audio('sounds/gangnam.mp3');
+var pbjtime = new Audio('sounds/pbjtime.mp3');
+var numanuma = new Audio('sounds/numanuma.mp3');
 
 $(document).ready(init);
 function init(){
@@ -168,6 +170,14 @@ function flipCard($card){
         setCard($card, 'omfgdogs.gif');
         playAudio(9);
         break;
+      case 10:
+        setCard($card, 'pbjtime.gif');
+        playAudio(10);
+        break;
+      case 11:
+        setCard($card, 'numanuma.gif');
+        playAudio(11);
+        break;
       default:
         $card.text($card.data('face'));
         break;
@@ -203,6 +213,12 @@ function checkAudio(audioName){
     case 9:
       omfgdogs.pause();
       break;
+    case 10:
+      pbjtime.pause();
+      break;
+    case 11:
+      numanuma.pause();
+      break;
   }
   audioPlaying = false;
 }
@@ -237,6 +253,14 @@ function playAudio(audioName){
       case 9:
         omfgdogs.currentTime = 0.3;
         omfgdogs.play();
+        break;
+      case 10:
+        pbjtime.currentTime = 0.5;
+        pbjtime.play();
+        break;
+      case 11:
+        numanuma.currentTime = 60.5;
+        numanuma.play();
         break;
     }
     audioPlaying = true;
