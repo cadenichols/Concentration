@@ -43,6 +43,7 @@ function newDeck(cardPairs){
 function newGame(){
   moves = 0;
   $moves.text(moves);
+  $selectedCard = null;
   gameSize = Math.floor($gameSize.val());
   if(gameSize <= 40 && gameSize >= 4){
     matchesFound = 0;
@@ -54,8 +55,7 @@ function newGame(){
       var $card = $('<div>')
       .addClass('card')
       .data('cardID', i)
-      .css('left', left)
-      .css('top', top);
+      .css({top: top, left: left, backgroundRepeat: "no-repeat", backgroundPosition: "center"});
       cards.push($card);
     }
     $('.gameArea').append(cards);
@@ -121,11 +121,30 @@ function compareCards($clickedCard){
 function flipCard($card){
   if($card.css('background-image').includes('images/playingCard.png')){
     $card.css('background-image', 'url(images/cardFace.png)');
-    $card.text($card.data('face'));
+    switch($card.data('face')){
+      case 1:
+        $card.css('background-image', "url(images/nyancade.gif)");
+        break;
+      case 2:
+        $card.css('background-image', "url(images/leekspin.gif)");
+        break;
+      case 3:
+        $card.css('background-image', "url(images/magikarp.gif)");
+        break;
+      case 4:
+        $card.css('background-image', "url(images/heman.gif)");
+        break;
+      case 5:
+        $card.css('background-image', "url(images/gangnamStyle.gif)");
+        break;
+      default:
+        $card.text($card.data('face'));
+        break;
+    }
   }
   else {
     $card.text('');
-    $card.css('background-image', 'url(images/playingCard.png)');
+    $card.css("background-image", 'url(images/playingCard.png)');
   }
 }
 
