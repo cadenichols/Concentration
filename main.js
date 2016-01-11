@@ -14,6 +14,7 @@ var $gameArea;
 var $moves;
 var moves = 0;
 var audioPlaying = false;
+
 var dramatic = new Audio('sounds/dramatic.mp3');
 var omfgdogs = new Audio('sounds/omfgdogs.mp3');
 var nyancat = new Audio('sounds/nyancat.mp3');
@@ -24,6 +25,7 @@ var gangnam = new Audio('sounds/gangnam.mp3');
 var pbjtime = new Audio('sounds/pbjtime.mp3');
 var numanuma = new Audio('sounds/numanuma.mp3');
 var spiderpig = new Audio('sounds/spiderpig.mp3');
+var looneyTunes = new Audio('sounds/looneyTunes.mp3');
 
 $(document).ready(init);
 function init(){
@@ -183,6 +185,10 @@ function flipCard($card){
         setCard($card, 'spiderpig.gif');
         playAudio(12);
         break;
+      case 13:
+        setCard($card, 'looneyTunes.gif');
+        playAudio(13);
+        break;
       default:
         $card.text($card.data('face'));
         break;
@@ -226,6 +232,9 @@ function checkAudio(audioName){
       break;
     case 12:
       spiderpig.pause();
+      break;
+    case 13:
+      looneyTunes.pause();
       break;
   }
   audioPlaying = false;
@@ -273,6 +282,10 @@ function playAudio(audioName){
       case 12:
         spiderpig.currentTime = 0;
         spiderpig.play();
+        break;
+      case 13:
+        looneyTunes.currentTime = 0.7;
+        looneyTunes.play();
         break;
     }
     audioPlaying = true;
